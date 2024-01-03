@@ -1,56 +1,56 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { myTheme } from "../styles/Theme.styled";
 
+type BtnPropsType = {
+  btnType: "primary" | "secondary",
+  btnText: string
 
+}
 
-export function CardBtn() {
-  return (
-    <div>
-      <StyledBtn type='button'>See more</StyledBtn>
-      <SecondButton type='button'>Save</SecondButton>
-    </div>
+export function CardBtn(props: BtnPropsType) {
+  return (  
+      <StyledBtn type='button' btnType = {props.btnType} btnText={props.btnText}>{props.btnText}</StyledBtn>
   );
 }
 
 
-const StyledBtn = styled.button`
-
-  box-sizing: border-box;
+const StyledBtn = styled.button <BtnPropsType>`
   width: 86px;
   height: 30px;
-  border: none;
+  border: none; 
   border-radius: 5px;
 
   margin: auto;
-  padding:0;
-  margin-left: 10px;
 
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 10px;
   line-height: 20px;
 
-  background-color: #4E71FE;
-  color: #fff;
- 
+${props => props.btnType === "primary" && css<BtnPropsType> `
+ background-color: ${myTheme.colors.accent};
+ color: ${myTheme.colors.background};
+
   &:hover {
-   border: 2px solid #4E71FE;
+   border: 2px solid ${myTheme.colors.accent};
    background-color: transparent;
-   color: #4E71FE; 
-}
-  
-`;
+   color: ${myTheme.colors.accent};
 
-const SecondButton = styled(StyledBtn)`
+`}
 
+
+${props => props.btnType === "secondary" && css<BtnPropsType> `
 margin-left: 12px;
-border: 2px solid #4E71FE;
+border: 2px solid ${myTheme.colors.accent};;
 background-color: transparent;
-color: #4E71FE;
+color: ${myTheme.colors.accent};
 
 &:hover {
   border: none;
-  background-color: #4E71FE;
-  color: #fff; 
+  background-color: ${myTheme.colors.accent};
+  color: ${myTheme.colors.background}; 
 }
 
+  
+`}
 `

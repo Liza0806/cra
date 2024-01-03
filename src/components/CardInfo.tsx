@@ -1,11 +1,21 @@
 import styled from "styled-components"
+import { myTheme } from "../styles/Theme.styled";
 
-export function CardInfo(){
+
+interface CardInfoProps {
+  title: string;
+  text: string;
+}
+
+
+export function CardInfo(cardProps: CardInfoProps){
     return (
-      <StyledCardInfo>
-        <StyledTitle>Headline</StyledTitle>
-        <StyledAbout>Faucibus. Faucibus. Sit sit sapien sit tempusrisu ut. Sit molestie ornare in venen.</StyledAbout>
-      </StyledCardInfo>
+      <>
+        <StyledTitle>{cardProps.title}</StyledTitle>
+       <StyledCardInfo> 
+        <StyledAbout>{cardProps.text}</StyledAbout>
+     </StyledCardInfo>
+     </>
     )
   }
 
@@ -15,9 +25,7 @@ export function CardInfo(){
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
-  color: #ABB3BA;
-  margin: 0;
-  
+  color: ${myTheme.colors.textColor.light};
   `
 
   const StyledTitle = styled.h3`
@@ -26,14 +34,14 @@ export function CardInfo(){
   font-weight: 700;
   font-size: 16px;
   line-height: 19.36px;
-  color: #000000;
-  margin: 0 0 20px 0;
+  color: ${myTheme.colors.textColor.dark};
+  margin: 20px 0 20px 10px;
   `
 
   const StyledCardInfo = styled.div`
-
-  width: 260px;
-  height: 80px;
-  padding: 20px 10px;
+  
+  height: 40px;
+  padding: 0px 10px;
+  margin-bottom: 20px;
 
   `

@@ -2,43 +2,38 @@
 import  styled  from "styled-components";
 import { CardBtn } from "./CardBtn";
 import { CardInfo } from "./CardInfo";
+import { myTheme } from "../styles/Theme.styled";
 
 
-export function Card(){
+
+export function Card(props: any){
   
-    return (
-      <StyledCard>
-        <StyledImgContainer>
-    
-       <StyledImg src="https://i.postimg.cc/PrkrQsVr/Rectangle.png" alt="Rectangle"/>
-       <HelloImg src='https://i.postimg.cc/PfD5Dr4R/dimych.png' alt='dimych'/>
-       
-       </StyledImgContainer>
-        <CardInfo/>
-        <CardBtn/>
-      </StyledCard>
-    )
+  return (
+    <StyledCard>
+      <StyledImgContainer>
+        <img src={props.img} alt={props.img.match(/\/([^/]+)\.[^.]+$/)[1]} />
+        <HelloImg src={props.hiddenImg} alt={props.hiddenImg.match(/\/([^/]+)\.[^.]+$/)[1]} />
+      </StyledImgContainer>
+      <CardInfo title={props.title} text={props.text} />
+      <CardBtn btnType="primary" btnText="See more"/>
+      <CardBtn btnType="secondary" btnText="Save"/>
+ 
+    </StyledCard>
+  );
   }
  
-  const StyledImg = styled.img`
-
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   
- 
-  `
   const StyledCard = styled.div`
 
   width: 300px;
-  height: 350px;
   box-sizing: border-box;
 
   margin: auto;
   padding: 10px;
+  padding-bottom: 20px;
   border-radius: 15px;
 
-  background-color: #fff;
+  background-color: ${myTheme.colors.background};
   box-shadow: 0px 4px 20px 5px rgba(0, 0, 0, 0.1);
 
   button {
